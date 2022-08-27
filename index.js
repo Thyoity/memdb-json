@@ -15,6 +15,18 @@ class memdb {
 
         }
     }
+    
+    reload(path) {
+        if (path === undefined) this.db = [];
+        else {
+            try {
+                this.db = JSON.parse(fs.readFileSync(path).toString());
+            } catch (x) {
+                throw x;
+            }
+
+        }
+    }
 
     #isJSONObject(obj) {
         return obj !== undefined && obj !== null && obj.constructor == Object;
